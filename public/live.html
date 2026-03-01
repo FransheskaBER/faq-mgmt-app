@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Live</title>
+    <style>
+        #published-faqs-table th,
+        #published-faqs-table td {
+        padding: 0.5rem 0.5rem; /* adjust to taste */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        thead {
+            background: #f5f5f5;
+        }
+
+        dialog#chat {
+            width: 500px;
+            border: none;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+            font: 14px/1.4 system-ui;
+        }
+        dialog#chat form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 20px;
+        }
+        #chatBody {
+            min-height: 180px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 4px;
+            display: grid;
+            gap: 8px;
+        }
+        .chat-message {
+            padding: 10px 14px;
+            border-radius: 16px;
+            background: #e5e6eb;
+        }
+        .chat-message.user {
+            background: #3367d6;
+            color: #fff;
+            justify-self: end;
+        }
+        .chat-message.bot {
+            background: #f1f3f7;
+            justify-self: start;
+        }
+        .chat-input {
+            display: flex;
+            gap: 8px;
+        }
+        .chat-input input {
+            flex: 1;
+        }
+
+    </style>
+</head>
+<body>
+        <h1>Published FAQS</h1>
+
+    <!--All FAQs table -->
+    <section id="published-faqs">
+
+        <label>Search FAQ: <input id="faq-search" type="search" placeholder="Search question or answer…" /></label>
+        <label>Filter by category
+            <select id="faq-category-filter">
+                <option value="">All categories</option>
+            </select>
+        </label>
+        <br><br>
+        <table id="published-faqs-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <br>
+
+    <a href="index.html">
+        <button type="button" id="manage-faqs">Go to Manage FAQs</button>
+    </a>
+    <br><br>
+    <button type="button" id="openChatBtn">Open Chat</button>
+
+    <dialog id="chat">
+        <form method="dialog" id="chatForm">
+            <h3 id="chat-title">Welcome to the FAQ Chat</h3>
+
+            <div id="chatBody" aria-live="polite"></div>
+
+            <div class="chat-input">
+                <input id="msg" placeholder="Type a message..." autocomplete="off" />
+                <button type="button" id="voiceToogle" aria-pressed="false" aria-label="Start voice input">🎤</button>
+                <button type="submit">Send</button>
+                <button type="close" id="closeChat">Close Chat</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="script2.js"></script>
+
+</body>
+</html>

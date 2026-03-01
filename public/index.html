@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ management</title>
+    <style>
+        .is-hidden{
+            display: none;
+        }
+        #faq-table{
+            border-collapse: collapse; /* optional, makes padding more obvious */
+        }
+        #faq-table th,
+        #faq-table td {
+        padding: 0.5rem 0.5rem; /* adjust to taste */
+        }
+        #faq-modal{
+            width: clamp(320px, 60vw, 640px);
+            padding: 2rem;
+        }
+        #faq-form{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        #faq-form label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        #faq-form textarea,
+        #faq-form input,
+        #faq-form select {
+            width: 100%;
+            min-height: 2.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        thead {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ Management</h1>
+
+    <!--All FAQs table -->
+    <section id="faq-managment">
+        <header>
+            <button id="open-create-modal">Add New FAQ</button>
+            <a href="live.html">
+                <button type="button" id="see-published-faqs">Go to Live FAQs</button>
+                <br><br>
+            </a>
+            <h2>All FAQs</h2>
+        </header>
+
+        <table id="faq-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="is-hidden">Id</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Category</th>
+                    <th>Published</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+
+    <dialog id="faq-modal">
+        <form method="dialog" id="faq-form">
+            
+            <h3 id="faq-modal-title">Create FAQ</h3>
+            
+            <label>Question
+                <textarea name="question" id="faq-question" required></textarea></label>
+            <label>Answer 
+                <textarea name="answer" id="faq-answer" required></textarea></label>
+            <label>Category
+                <input name="category" id="faq-category" placeholder="Add New Category" list="faq-categories" required></label>
+                <datalist id="faq-categories"></datalist>
+
+            <menu>
+                <button type="button" id="faq-cancel" value="cancel">Cancel</button>
+                <button type="submit" id="faq-save" value="confirm">Save</button>
+            </menu>
+        </form>
+    </dialog>
+
+
+     <script src="script.js"></script>
+
+</body>
+</html>
